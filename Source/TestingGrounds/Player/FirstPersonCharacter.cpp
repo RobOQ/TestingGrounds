@@ -100,7 +100,7 @@ void AFirstPersonCharacter::BeginPlay()
 	//else
 	//{
 	//	VR_Gun->SetHiddenInGame(true, true);
-	//	Mesh1P->SetHiddenInGame(false, true);
+		Mesh1P->SetHiddenInGame(false, true);
 	//}
 }
 
