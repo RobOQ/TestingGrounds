@@ -72,9 +72,17 @@ void AGun::OnFire()
 	if (FireAnimation != NULL)
 	{
 		// Get the animation object for the arms mesh
-		if (AnimInstance != NULL)
+		if (FPAnimInstance != NULL)
 		{
-			AnimInstance->Montage_Play(FireAnimation, 1.f);
+			FPAnimInstance->Montage_Play(FireAnimation, 1.f);
+		}
+	}
+
+	if(TPFireAnimation != NULL)
+	{
+		if (TPAnimInstance != NULL)
+		{
+			TPAnimInstance->Montage_Play(FireAnimation, 1.f);
 		}
 	}
 }
