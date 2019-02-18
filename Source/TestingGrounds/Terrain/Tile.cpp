@@ -1,6 +1,7 @@
 // Copyright 2019 Robert O'Quinn
 
 #include "Tile.h"
+#include "Engine/World.h"
 
 // Sets default values
 ATile::ATile()
@@ -10,15 +11,20 @@ ATile::ATile()
 
 }
 
-void ATile::PlaceActors()
+void ATile::PlaceActors(TSubclassOf<AActor> ToSpawn, int MinSpawn, int MaxSpawn)
 {
 	FVector Min(0.0f, -2000.0f, 0.0f);
 	FVector Max(4000.0f, 2000.0f, 0.0f);
 	FBox Bounds(Min, Max);
-	for(int i = 0; i < 20; ++i)
+	int NumberToSpawn = FMath::RandRange(MinSpawn, MaxSpawn);
+	UWorld* const World = GetWorld();
+	for(int i = 0; i < NumberToSpawn; ++i)
 	{
 		FVector RandPoint = FMath::RandPointInBox(Bounds);
-		UE_LOG(LogTemp, Warning, TEXT("Random Point: %s"), *RandPoint.ToCompactString());
+		FRotator SpawnRotation(0.0f, FMath::RandRange(0.0f, 360.0f), 0.0f);
+
+		AActor* Spawned = World->SpawnActor<AActor>(ToSpawn, RandPoint, SpawnRotation);
+		Spawned->AttachToActor(this, FAttachmentTransformRules(EAttachmentRule::KeepRelative, false));
 	}
 }
 
