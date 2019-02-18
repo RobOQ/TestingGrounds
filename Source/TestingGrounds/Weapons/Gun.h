@@ -38,10 +38,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 	class UAnimMontage* TPFireAnimation;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
+	UPROPERTY()
 	class UAnimInstance* FPAnimInstance;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
+	UPROPERTY()
 	class UAnimInstance* TPAnimInstance;
 
 	/** Fires a projectile. */
